@@ -6,7 +6,7 @@
 # clone repo
 $ git clone https://bitbucket.org/bodisteam/code-challenge-js.git code-challenge
 
-# got to project path
+# go to project path
 $ cd path/to/code-challenge
 
 # enable .env
