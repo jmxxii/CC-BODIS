@@ -19,7 +19,7 @@ $ npm install
 $ npm run dev
 
 # serve api at localhost:3001
-$ json-server --watch --port=3001 db.json
+$ npx json-server --watch --port=3001 db.json
 ```
 Navigate to http://localhost:4000
 
