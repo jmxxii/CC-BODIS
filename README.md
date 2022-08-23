@@ -3,6 +3,15 @@
 ## Build Setup
 
 ```bash
+# clone repo
+$ git clone https://bitbucket.org/bodisteam/code-challenge-js.git code-challenge
+
+# got to project path
+$ cd path/to/code-challenge
+
+# enable .env
+$ cp example.env .env
+
 # install dependencies
 $ npm install
 
