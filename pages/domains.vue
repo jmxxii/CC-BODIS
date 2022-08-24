@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     /**
-     * @todo Set loading state while call is being process.
+     * @todo: Set loading state while call is being process.
      */
     async fetchDomains() {
       try {
@@ -95,21 +95,21 @@ export default {
     },
 
     /**
-     * @todo Make the search input field filter the domains displayed by asynchronously querying api endpoint GET | /domains?domain_name={domain}.
+     * @todo: Make the search input field filter the domains displayed by asynchronously querying api endpoint GET | /domains?domain_name={domain}.
      */
     async handleSearch(value) {
 
     },
 
     /**
-     * @todo Make the imprint icon toggle the imprint flag for a domain by changing icon color when true/false. PUT | /domains/{id}
+     * @todo: Make the imprint icon toggle the imprint flag for a domain by changing icon color when true/false. PUT | /domains/{id}
      */
     async handleImprint(item, index) {
 
     },
 
     /**
-     * @todo Make the delete icon remove domain using api endpoint DELETE | /domains/{id}
+     * @todo: Make the delete icon remove domain using api endpoint DELETE | /domains/{id}
      */
     async handleDelete(item, index) {
 

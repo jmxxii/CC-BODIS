@@ -77,19 +77,16 @@ export default {
   mounted() {
     this.fetchStats();
   },
+  /**
+   * @todo: Retrieve Stats from endpoint `/stats`.
+   */
   methods: {
-    // TODO: Retrieve Stats from endpoint `/stats`.
     async fetchStats() {
       try {
-        this.loading = true;
-        const stats = await this.$axios.get('/stats');
-        this.stats = stats.data;
       }
       catch (e) {
-        console.log(e);
       }
       finally {
-        this.loading = false;
       }
     }
   }
