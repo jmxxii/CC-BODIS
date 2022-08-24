@@ -1,0 +1,17 @@
+{
+  "name": "ads-code-challenge",
+  "workspaceFolder": "/workspace",
+  "settings": {
+    "workbench.colorTheme": "Cobalt2"
+  },
+  "postCreateCommand": "/init/devcontainer-post-create.sh",
+  "postAttachCommand": "/init/devcontainer-post-attach.sh",
+  "extensions": [
+    "wesbos.theme-cobalt2"
+  ],
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "code-challenge",
+  "shutdownAction": "stopCompose"
+}

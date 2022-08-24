@@ -1,0 +1,18 @@
+version: '3'
+
+volumes:
+  code-challenge:
+
+services:
+  code-challenge:
+    container_name: code-challenge
+    build:
+      context: .
+      dockerfile: ./etc/docker/node/Dockerfile
+    env_file: ./.devcontainer/devcontainer.env
+    ports:
+      - 4000:4000
+      - 3001:3001
+    volumes:
+      - .:/workspace:cached
+      - ${HOME}/.ssh:/root/.ssh:ro
