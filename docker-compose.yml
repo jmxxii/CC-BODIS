@@ -15,4 +15,5 @@ services:
       - 3001:3001
     volumes:
       - .:/workspace:cached
+      - code-challenge:/workspace/node_modules:delegated
       - ${HOME}/.ssh:/root/.ssh:ro

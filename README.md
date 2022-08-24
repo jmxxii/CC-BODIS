@@ -12,12 +12,17 @@ $ cd path/to/code-challenge
 ### With Docker
 
 ```shell
+# Build Container
+$ docker-compose --env-file ./.devcontainer/devcontainer.env build --no-cache
+
+# Start Container
 $ docker-compose up -d
 ```
-### No Docker?
-If you do not have docker, we recommend installing, otherwise you can run on your local computer. You will need to install the following dependencies:
 
-- Node 16^ 
+### No Docker?
+If you do not have docker we recommend installing it, otherwise you can run webapp on your computer. You will need to install the following dependencies:
+
+- Node 14
 
 Run the following commands to serve on your localhost. 
 
