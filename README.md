@@ -1,6 +1,6 @@
 # Ads.com Code-Challenge
 
-## Build Setup
+### Clone Repo
 
 ```bash
 # clone repo
@@ -8,20 +8,33 @@ $ git clone https://bitbucket.org/bodisteam/code-challenge-js.git code-challenge
 
 # go to project path
 $ cd path/to/code-challenge
+```
+### With Docker
 
+```shell
+$ docker-compose up -d
+```
+### No Docker?
+If you do not have docker, we recommend installing, otherwise you can run on your local computer. You will need to install the following dependencies:
+
+- Node 16^ 
+
+Run the following commands to serve on your localhost. 
+
+```bash
 # enable .env
 $ cp example.env .env
 
 # install dependencies
 $ npm install
 
+# serve api (in background) at localhost:3001
+npx json-server --watch --port=3001 --quiet db.json &
+
 # serve app at localhost:4000
 $ npm run dev
-
-# serve api at localhost:3001
-$ npx json-server --watch --port=3001 db.json
 ```
-Navigate to http://localhost:4000
+Upon successful build, Visit on your browser: <a href="http://localhost:4000"> http://localhost:4000 </a>
 
 ## Code Challenge
 - Explore the project sandbox by clicking though every actionable button.
