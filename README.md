@@ -49,4 +49,5 @@ Upon successful build, Visit on your browser: <a href="http://localhost:4000"> h
 
 ## Submit Changes.
 - Create a new branch and commit your changes under your new branch.
-- Once completed, please create a pull request and notify your interviewer.
+- Once completed, zip the directory including all .git directory so that we can track your changes. 
+- Send zip file to your interviewer.
