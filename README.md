@@ -45,9 +45,10 @@ Upon successful build, Visit on your browser: <a href="http://localhost:4000"> h
 - Explore the project sandbox by clicking though every actionable button.
 - Navigate to `http://localhost:4000/code-challenge` and complete the todo list.
 - Do a thorough project search for inline TODO comments.
+- Complete at least 50 points. We encourage you to try completing as many as possible.
 - Identify things that can be improved in addition to the todo list.
 
 ## Submit Changes.
 - Create a new branch and commit your changes under your new branch.
-- Once completed, zip the directory including all .git directory so that we can track your changes. 
+- Once completed, zip the directory including `.git` directory so that we can track your changes. 
 - Send zip file to your interviewer.

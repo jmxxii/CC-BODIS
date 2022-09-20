@@ -7,7 +7,7 @@
 
       <v-card-text>
         <v-alert type="info">
-          This page outlines requirements of the code challenge.
+          This page outlines requirements of the code challenge. Please complete at least 50+ points, and if you enjoy a challenge, we encourage you complete as much as you can.
         </v-alert>
         <v-list subheader two-line flat>
           <!-- TODO: Make this its own component -->
@@ -20,7 +20,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Domains</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>Domains</span> <small>4 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Retrieve total domains from endpoint <code>GET | /stats</code>.
                   </v-list-item-subtitle>
@@ -33,7 +33,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Inactive Domains</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>Inactive Domains</span> <small>4 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Retrieve total <strong>inactive domains</strong> from endpoint <code>GET | /stats</code>.
                   </v-list-item-subtitle>
@@ -46,7 +46,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Active Domains</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>Active Domains</span> <small>4 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Retrieve total <strong>Active domains</strong> from endpoint <code>GET | /stats</code>.
                   </v-list-item-subtitle>
@@ -59,7 +59,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>International Domains</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>International Domains</span> <small>4 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Retrieve total <strong>international domains</strong> from endpoint <code>GET | /stats</code>.
                   </v-list-item-subtitle>
@@ -78,7 +78,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Search Filter</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>Search Filter</span> <small>10 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Make the <strong>search input field</strong> filter the domains displayed by asynchronously querying
                     api endpoint <code>GET | /domains?domain_name={domain}"</code>.
@@ -92,7 +92,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Delete Domains</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>Delete Domains</span> <small>10 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Make the <strong>delete icon</strong> remove domain using api endpoint <code> DELETE |
                     /domains/{id}</code>.
@@ -106,7 +106,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Toggle Imprint</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>Toggle Imprint</span> <small>10 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Make the <strong>imprint icon</strong> toggle the imprint flag for a domain by changing icon color
                     when true/false. <code> PUT | /domains/{id}</code>
@@ -120,7 +120,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Use <code>AddDomain</code> Component</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>Use <code>AddDomain</code> Component</span> <small>20 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Load the <strong>Add Domain</strong> component into the <code>{{ '<\ v-dialog >' }}</code> shown
                     when clicking plus icon at bottom of Domain page.
@@ -134,7 +134,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Add Domains</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>Add Domains</span> <small>20 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     <p>Make the <strong>add domains form</strong> store new domains. <code> POST | /domains</code></p>
                   </v-list-item-subtitle>
@@ -153,7 +153,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>TODO LIST</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>TODO LIST</span> <small>20 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Convert the template into a dynamic property driven component. See file <code>/pages/code-challenge.vue</code>
                     for in-code comments.
@@ -173,7 +173,7 @@
                   <v-checkbox :input-value="active" color="primary" @click="toggle"/>
                 </v-list-item-action>
                 <v-list-item-content>
-                  <v-list-item-title>Dark Mode</v-list-item-title>
+                  <v-list-item-title class="d-flex justify-space-between"><span>Dark Mode</span> <small>4 pts.</small></v-list-item-title>
                   <v-list-item-subtitle>
                     Make theme dark/light mode selection persist through page refresh and navigation.
                   </v-list-item-subtitle>
