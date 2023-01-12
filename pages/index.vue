@@ -10,7 +10,7 @@
                 Total number of domains in account.
               </v-col>
               <v-col class="display-3 text-center" cols="4">
-                {{ stats.domains || '?' }}
+                {{ stats?.domains || '?' }}
               </v-col>
             </v-row>
           </v-card-text>
@@ -25,7 +25,7 @@
                 Total number of domains inactive.
               </v-col>
               <v-col class="display-3 text-center" cols="4">
-                {{ stats.inactive_domains || '?' }}
+                {{ stats?.inactive_domains || '?' }}
               </v-col>
             </v-row>
           </v-card-text>
@@ -40,7 +40,7 @@
                 Total number of active domains.
               </v-col>
               <v-col class="display-3 text-center" cols="4">
-                {{ stats.active_domains || '?' }}
+                {{ stats?.active_domains || '?' }}
               </v-col>
             </v-row>
           </v-card-text>
@@ -55,7 +55,7 @@
                 Total number of international domains.
               </v-col>
               <v-col class="display-3 text-center" cols="4">
-                {{ stats.international_domains || '?' }}
+                {{ stats?.international_domains || '?' }}
               </v-col>
             </v-row>
           </v-card-text>
@@ -77,16 +77,18 @@ export default {
   mounted() {
     this.fetchStats();
   },
-  /**
-   * @todo: Retrieve Stats from endpoint `/stats`.
-   */
   methods: {
     async fetchStats() {
+      this.loading = true;
+
       try {
+        this.stats = (await this.$axios.get('/stats')).data;
       }
       catch (e) {
+        console.error(e);
       }
       finally {
+        this.loading = false;
       }
     }
   }

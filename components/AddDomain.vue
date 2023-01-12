@@ -103,12 +103,34 @@ export default {
     }).catch(error => console.log(error.response.data))
   },
   methods: {
-    /**
-     * @todo: Split domains and assign to independent payloads then save using `POST | /domains` endpoint.
-     * @todo: Close the dialog once the domains are saved successfully and load new domains to list.
-     */
     parseAndSaveDomains(domains) {
-      console.log(domains)
+      this.loading = true;
+      const splitDomains = domains.split('\n');
+
+      Promise.all(
+        splitDomains.map(async (domain) => {
+          try {
+            const payload = {
+              domain_name: domain,
+              user_id: 88881,
+              domain_name_no_tld: domain.split('.')[0],
+              time_added_to_user: new Date(),
+              is_idn: false,
+              imprint: false,
+              folder_id: null,
+              folder_name: "Unassigned"
+            }
+
+            await this.$axios.post('/domains', payload)
+          }
+          catch(e) {
+            console.error(e);
+          }
+        })
+      )
+
+      this.loading = false;
+      this.$emit('close');
     }
   }
 }

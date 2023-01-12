@@ -10,11 +10,12 @@
           label="Search"
           single-line
           hide-details
+          @keyup="handleSearch"
         />
       </v-card-title>
       <v-data-table
         :headers="headers"
-        :items.sync="domains"
+        :items.sync="filteredDomains"
         :loading="loading"
         :search="search"
         disable-sort
@@ -30,7 +31,11 @@
             <td>{{ item.imprint }}</td>
             <td>
               <v-btn icon @click="handleImprint(item, i)">
-                <v-icon>mdi-fingerprint</v-icon>
+                <v-icon 
+                  :color="item.imprint ? 'green':'red'"
+                >
+                  mdi-fingerprint
+                </v-icon>
               </v-btn>
               <v-btn icon @click="handleDelete(item, i)">
                 <v-icon>mdi-delete</v-icon>
@@ -55,13 +60,16 @@
       v-model="showDialog"
       max-width="600px"
     >
-      <!-- TODO: Load the <strong>Create Domain</strong> component into the dialog in domains page. -->
+      <add-domain @close="refreshDomains" />
     </v-dialog>
   </v-container>
 </template>
 
 <script>
+import AddDomain from '../components/AddDomain.vue';
+
 export default {
+  components: {AddDomain},
   data () {
     return {
       loading: false,
@@ -74,16 +82,25 @@ export default {
         { text: 'Imprinted', value: 'imprint' },
       ],
       domains: [],
+      searchedDomains: [],
     }
+  },
+  computed: {
+    filteredDomains() {
+      if (this.search.length) {
+        return this.searchedDomains
+      }
+
+      return this.domains;
+    },
   },
   mounted() {
     this.fetchDomains();
   },
   methods: {
-    /**
-     * @todo: Set loading state while call is being process.
-     */
     async fetchDomains() {
+      this.loading = true;
+
       try {
         this.domains = (await this.$axios.get(`/domains`)).data;
       }
@@ -91,29 +108,62 @@ export default {
         console.log(e);
       }
       finally {
+        this.loading = false
       }
     },
+    async handleSearch() {
+      if (this.search.length) {
+        this.loading = true;
 
-    /**
-     * @todo: Make the search input field filter the domains displayed by asynchronously querying api endpoint GET | /domains?domain_name={domain}.
-     */
-    async handleSearch(value) {
-
+        try {
+          this.searchedDomains = (await this.$axios.get(`/domains?domain_name=${this.search}`)).data;
+        }
+        catch (e) {
+          console.log(e);
+        }
+        finally {
+          this.loading = false
+        }
+      }
     },
-
-    /**
-     * @todo: Make the imprint icon toggle the imprint flag for a domain by changing icon color when true/false. PUT | /domains/{id}
-     */
     async handleImprint(item, index) {
+      this.loading = true;
 
+      try {
+        await (this.$axios.put(`/domains/${item.id}`, {...item, imprint: !item.imprint}));
+      }
+      catch (e) {
+        console.log(e);
+      }
+      finally {
+        this.loading = false;
+        this.fetchDomains();
+      }
     },
-
-    /**
-     * @todo: Make the delete icon remove domain using api endpoint DELETE | /domains/{id}
-     */
     async handleDelete(item, index) {
+      this.loading = true;
 
+      try {
+        await (this.$axios.delete(`/domains/${item.id}`));
+      }
+      catch (e) {
+        console.log(e);
+      }
+      finally {
+        this.loading = false;
+        this.domains = this.domains.filter((d) => d.id !== item.id);
+        /* 
+          You can either fetch domains again or 
+          remove the domain from the current data we have
+          or both, if preferred 
+        */
+        // this.fetchDomains();
+      }
     },
+    refreshDomains() {
+      this.showDialog = false;
+      this.fetchDomains();
+    }
   }
 }
 </script>

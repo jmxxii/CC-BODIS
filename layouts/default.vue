@@ -76,13 +76,16 @@ export default {
       title: 'Ads.com'
     }
   },
+  mounted() {
+    const isDarkTheme = JSON.parse(localStorage.getItem('isDarkTheme'))
+    this.isDarkMode = isDarkTheme;
+    this.$vuetify.theme.dark = isDarkTheme;
+  },
   methods: {
-    /**
-     * @todo: Make theme dark/light mode selection persist through page refresh and navigation.
-     */
     setMode() {
       this.isDarkMode = !this.isDarkMode
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+      localStorage.setItem('isDarkTheme', JSON.stringify(this.isDarkMode));
     }
   }
 }
