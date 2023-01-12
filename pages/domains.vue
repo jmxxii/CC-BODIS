@@ -60,7 +60,7 @@
       v-model="showDialog"
       max-width="600px"
     >
-      <add-domain @close="refreshDomains" />
+      <add-domain @close="refreshDomains(true)" />
     </v-dialog>
   </v-container>
 </template>
@@ -116,7 +116,7 @@ export default {
         this.loading = true;
 
         try {
-          this.searchedDomains = (await this.$axios.get(`/domains?domain_name=${this.search}`)).data;
+          this.searchedDomains = (await this.$axios.get(`/domains?domain_name_like=${this.search}`)).data;
         }
         catch (e) {
           console.log(e);
@@ -137,7 +137,7 @@ export default {
       }
       finally {
         this.loading = false;
-        this.fetchDomains();
+        this.refreshDomains();
       }
     },
     async handleDelete(item, index) {
@@ -151,17 +151,18 @@ export default {
       }
       finally {
         this.loading = false;
-        this.domains = this.domains.filter((d) => d.id !== item.id);
         /* 
-          You can either fetch domains again or 
-          remove the domain from the current data we have
-          or both, if preferred 
+        You can either fetch domains again or 
+        remove the domain from the current data we have
+        or both, if preferred 
         */
-        // this.fetchDomains();
+       // this.domains = this.domains.filter((d) => d.id !== item.id);
+        this.refreshDomains();
       }
     },
-    refreshDomains() {
-      this.showDialog = false;
+    refreshDomains(closeDialog = false) {
+      if (closeDialog) this.showDialog = false;
+      this.handleSearch();
       this.fetchDomains();
     }
   }

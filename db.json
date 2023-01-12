@@ -230,6 +230,17 @@
       "folder_id": null,
       "folder_name": "Unassigned",
       "id": 35707630
+    },
+    {
+      "domain_name": "frown.com",
+      "user_id": 88881,
+      "domain_name_no_tld": "frown",
+      "time_added_to_user": "2023-01-12T17:34:34.679Z",
+      "is_idn": false,
+      "imprint": true,
+      "folder_id": null,
+      "folder_name": "Unassigned",
+      "id": 35707631
     }
   ],
   "folders": [
